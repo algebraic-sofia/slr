@@ -1,0 +1,7 @@
+start S
+
+S' -> A
+S' -> e
+B -> ε
+B -> f
+A -> B c

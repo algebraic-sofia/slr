@@ -1,0 +1,48 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           Lyre
+version:        0.1.0.0
+description:    A LR(1) parser generator for people that wants to suffer.
+homepage:       https://github.com/felipgchi/Lyre#readme
+bug-reports:    https://github.com/felipgchi/Lyre/issues
+author:         Chiyoku
+maintainer:     chiyokuoni@gmail.com
+copyright:      2022 Chiyoku
+license:        BSD3
+build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/felipgchi/Lyre
+
+executable Lyre-exe
+  main-is: Main.hs
+  other-modules:
+      Grammar
+      Parser
+      Paths_Lyre
+  hs-source-dirs:
+      app
+  default-extensions:
+      DuplicateRecordFields
+      OverloadedRecordDot
+      OverloadedStrings
+      DerivingStrategies
+      GeneralizedNewtypeDeriving
+      LambdaCase
+      TupleSections
+      FlexibleContexts
+      NamedFieldPuns
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      array
+    , base >=4.7 && <5
+    , containers
+    , megaparsec
+    , mtl
+    , unordered-containers
+  default-language: Haskell2010

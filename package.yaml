@@ -1,0 +1,37 @@
+name:                Lyre
+version:             0.1.0.0
+github:              "felipgchi/Lyre"
+license:             BSD3
+author:              "Chiyoku"
+maintainer:          "chiyokuoni@gmail.com"
+copyright:           "2022 Chiyoku"
+
+description:         A LR(1) parser generator for people that wants to suffer.
+
+dependencies:
+- base >= 4.7 && < 5
+
+executables:
+  Lyre-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    default-extensions:
+    - DuplicateRecordFields
+    - OverloadedRecordDot
+    - OverloadedStrings
+    - DerivingStrategies
+    - GeneralizedNewtypeDeriving
+    - LambdaCase
+    - TupleSections
+    - FlexibleContexts
+    - NamedFieldPuns
+    dependencies:
+    - array
+    - containers
+    - unordered-containers
+    - megaparsec
+    - mtl
