@@ -1,7 +1,8 @@
-start S
+start Goal
 
-S' -> A
-S' -> e
-B -> ε
-B -> f
-A -> B c
+Goal -> List
+List -> List Pair
+List -> Pair
+
+Pair -> l Pair r
+Pair -> l r
