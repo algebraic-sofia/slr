@@ -23,7 +23,7 @@ executable Lyre-exe
   main-is: Main.hs
   other-modules:
       Grammar
-      Parser
+      LR0
       Paths_Lyre
   hs-source-dirs:
       app
@@ -44,5 +44,6 @@ executable Lyre-exe
     , containers
     , megaparsec
     , mtl
+    , text
     , unordered-containers
   default-language: Haskell2010

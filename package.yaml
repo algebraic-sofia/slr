@@ -34,4 +34,5 @@ executables:
     - containers
     - unordered-containers
     - megaparsec
+    - text
     - mtl

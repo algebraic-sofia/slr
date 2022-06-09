@@ -1,17 +1,30 @@
 module Main where
 
-import Grammar ( getFirstTable, emptyReg, firstState, getGotoTable )
-import Parser ( parseGrammar )
-import Control.Monad.State (runState, evalState)
+import Grammar
+import LR0 (getClosure, startRule)
+
+import qualified Data.Set as Set
+import qualified Data.List as List
+
+listGrammar :: Grammar
+listGrammar = Grammar
+  { nonTerminals = Set.empty
+  , terminals = Set.empty
+  , declarated = Set.empty
+  , rules = Set.fromList
+      [ Rule "S'" [NonTerminal "S"]
+      , Rule "S"  [Terminal "(", NonTerminal "L", Terminal ")"]
+      , Rule "S"  [Terminal "x"]
+      , Rule "L"  [NonTerminal "S"]
+      , Rule "L"  [NonTerminal "L", Terminal ";", NonTerminal "S"]
+      ]
+  , start = "S'"
+  }
 
 main :: IO ()
 main = do
-  res <- readFile "ata.bnk"
-  case parseGrammar res of
-    Left err -> putStrLn err
-    Right grammar -> do
-      let fst' = getFirstTable grammar
-      let (n, res') = runState (getGotoTable grammar) (emptyReg fst')
-      print fst'
-      putStr "\n\n"
-      print res'
+  let (f, n) = (getFirstAndNullable listGrammar)
+  let rules = (Set.toList listGrammar.rules)
+  case List.find (\a -> a.name == listGrammar.start) rules of
+    Just start ->  print (getClosure rules (Set.singleton (startRule start)))
+    Nothing -> undefined
