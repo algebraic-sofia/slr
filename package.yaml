@@ -30,9 +30,6 @@ executables:
     - FlexibleContexts
     - NamedFieldPuns
     dependencies:
-    - array
     - containers
     - unordered-containers
-    - megaparsec
     - text
-    - mtl
